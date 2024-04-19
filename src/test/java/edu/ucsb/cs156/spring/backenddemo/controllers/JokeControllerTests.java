@@ -11,6 +11,7 @@ import edu.ucsb.cs156.spring.backenddemo.services.JokeQueryService;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -30,11 +31,10 @@ public class JokeControllerTests {
   public void test_getJoke() throws Exception {
   
     String fakeJsonResult="{ \"fake\" : \"result\" }";
+    int amount = 3;
     String category = "Programming";
-    int numJokes = 3;
-    when(mockJokeQueryService.getJSON(category, numJokes)).thenReturn(fakeJsonResult);
-
-    String url = String.format("/api/jokes/get");
+    when(JokeQueryService.getJSON(eq(category), eq(amount))).thenReturn(fakeJsonResult);
+    String url = String.format("/joke/%s?amount=%s", category, amount + "");
 
     MvcResult response = mockMvc
         .perform( get(url).contentType("application/json"))
