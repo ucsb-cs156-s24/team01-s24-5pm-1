@@ -10,8 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import edu.ucsb.cs156.spring.backenddemo.services.CollegeSubredditQueryService;
-import edu.ucsb.cs156.spring.backenddemo.services.PublicHolidayQueryService;
-
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
