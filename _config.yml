@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team01-s24-5pm-1
 owner: ucsb-cs156-s24
 repo_name: team01-s24-5pm-1
-pull_requests: []
+pull_requests: [{"author":{"id":"MDQ6VXNlcjkxMTUxNTMy","is_bot":false,"login":"JUstISAGE","name":"Daniel Lyu"},"headRefName":"Daniel-University","number":23,"title":"Add University Service and Controller","url":"https://github.com/ucsb-cs156-s24/team01-s24-5pm-1/pull/23"},{"author":{"id":"U_kgDOCMuTiw","is_bot":false,"login":"ylin250","name":""},"headRefName":"Yulin-Joke","number":22,"title":"Add Joke Service and Test","url":"https://github.com/ucsb-cs156-s24/team01-s24-5pm-1/pull/22"}]
