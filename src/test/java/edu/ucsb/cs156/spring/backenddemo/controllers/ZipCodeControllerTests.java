@@ -39,10 +39,7 @@ public class ZipCodeControllerTests {
     when(mockZipCodeQueryService.getJSON(eq(zipcode))).thenReturn(fakeJsonResult);
 
     String url = String.format("/api/zipcode/get?zipcode=%s", zipcode);
-
-    System.out.println("***************----------*****************");
-    System.out.println(url);
-
+    
     MvcResult response = mockMvc
         .perform( get(url).contentType("application/json"))
         .andExpect(status().isOk()).andReturn();
