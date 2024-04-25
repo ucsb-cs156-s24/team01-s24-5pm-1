@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team01-s24-5pm-1
 owner: ucsb-cs156-s24
 repo_name: team01-s24-5pm-1
-pull_requests: [{"author":{"id":"U_kgDOCMuTiw","is_bot":false,"login":"ylin250","name":""},"headRefName":"Yulin-Joke-Controller","number":27,"title":"Add joke service and controller","url":"https://github.com/ucsb-cs156-s24/team01-s24-5pm-1/pull/27"}]
+pull_requests: []
