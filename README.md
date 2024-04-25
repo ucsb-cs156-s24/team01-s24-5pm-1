@@ -9,6 +9,7 @@ Lab instructions: <https://ucsb-cs156.github.io/s24/lab/team01.html>
 | George Nebieridze   | GeorgebigG   | TidesQueryService           | TidesController           |
 | Shuhan Lyu          | JUstISAGE    | UniversityQueryService      | UniversityController      |
 | Sanjay Srikanth     | Crossover661 | ZipCodeQueryService         | ZipCodeController         |
+| Yulin Lin           | ylin250      | JokeQueryService            | JokeController            |
 
 Repo: https://github.com/ucsb-cs156-s24/team01-s24-5pm-1
 
