@@ -9,34 +9,43 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import edu.ucsb.cs156.spring.backenddemo.services.CollegeSubredditQueryService;
-import edu.ucsb.cs156.spring.backenddemo.services.PublicHolidayQueryService;
+import edu.ucsb.cs156.spring.backenddemo.services.JokeQueryService;
 
-
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpHeaders;
 
 
 
-@WebMvcTest(value = CollegeSubredditsController.class)
-public class CollegeSubredditsControllerTests {
+@WebMvcTest(value = JokeController.class)
+public class JokeControllerTests {
+  private ObjectMapper mapper = new ObjectMapper();
   @Autowired
   private MockMvc mockMvc;
   @MockBean
-  CollegeSubredditQueryService mockCollegeSubredditQueryService;
+  JokeQueryService jokeQueryService;
 
   @Test
-  public void test_getCollegeSubreddits() throws Exception {
+  public void test_getJoke() throws Exception {
   
     String fakeJsonResult="{ \"fake\" : \"result\" }";
-    when(mockCollegeSubredditQueryService.getJSON()).thenReturn(fakeJsonResult);
-
-    String url = String.format("/api/collegesubreddits/get");
+    String numJokes = "3";
+    String category = "Programming";
+    when(jokeQueryService.getJSON(eq(category), eq(numJokes))).thenReturn(fakeJsonResult);
+    String url = String.format("/api/jokes/get?category=%s&numJokes=%s", category, numJokes);
 
     MvcResult response = mockMvc
         .perform( get(url).contentType("application/json"))

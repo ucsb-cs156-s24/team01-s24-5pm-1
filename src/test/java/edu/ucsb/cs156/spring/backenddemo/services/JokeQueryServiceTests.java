@@ -13,20 +13,21 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 
-@RestClientTest(CountryCodeQueryService.class)
-public class CountryCodeQueryServiceTests {
+@RestClientTest(JokeQueryService.class)
+public class JokeQueryServiceTests {
 
     @Autowired
     private MockRestServiceServer mockRestServiceServer;
 
     @Autowired
-    private CountryCodeQueryService countryCodeQueryService;
+    private JokeQueryService jokeQueryService;
 
     @Test
     public void test_getJSON() {
 
-        String country = "UnitedStates";
-        String expectedURL = CountryCodeQueryService.ENDPOINT.replace("{country}", country);
+        String category = "Programming";
+        String numJokes = "3";
+        String expectedURL = JokeQueryService.ENDPOINT.replace("{category}", category).replace("{numJokes}", numJokes);
 
         String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
@@ -35,7 +36,7 @@ public class CountryCodeQueryServiceTests {
                 .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
                 .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-        String actualResult = countryCodeQueryService.getJSON(country);
+        String actualResult = jokeQueryService.getJSON(category, numJokes);
         assertEquals(fakeJsonResult, actualResult);
     }
 }
