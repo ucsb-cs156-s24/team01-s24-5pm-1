@@ -23,7 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class JokeQueryService {
 
-    private static RestTemplate restTemplate = new RestTemplate();
+    ObjectMapper mapper = new ObjectMapper();
+
+    private final RestTemplate restTemplate;
 
     public JokeQueryService(RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder.build();
@@ -31,15 +33,15 @@ public class JokeQueryService {
 
     public static final String ENDPOINT = "https://v2.jokeapi.dev/joke/{category}?amount={numJokes}";
 
-    public static String getJSON(String category, int numJokes) throws HttpClientErrorException {
+    public String getJSON(String category, String numJokes) throws HttpClientErrorException {
         log.info("category={}, numJokes={}", category, numJokes);
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        Map<String, String> uriVariables = Map.of("category", category, "numJokes", ("" + numJokes));
-
         HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        Map<String, String> uriVariables = Map.of("category", category, "numJokes",  numJokes);
 
         ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
                 uriVariables);
